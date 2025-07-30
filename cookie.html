@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - ArtSpark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 6rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .back-home-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 4rem 0;
+            min-height: calc(100vh - 300px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .section-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cookie-table th {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .cookie-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cookie-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .cookie-table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-left: 4px solid #ff6b6b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info strong {
+            color: #333;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0 2rem 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffffff, #c3cfe2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact i {
+            font-size: 1.2rem;
+            width: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .back-home-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .cookie-table {
+                font-size: 0.9rem;
+            }
+
+            .cookie-table th,
+            .cookie-table td {
+                padding: 0.8rem 0.5rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-links h3::after, .footer-contact h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for smooth transitions */
+        .content-section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .content-section:nth-child(2) { animation-delay: 0.1s; }
+        .content-section:nth-child(3) { animation-delay: 0.2s; }
+        .content-section:nth-child(4) { animation-delay: 0.3s; }
+        .content-section:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ArtSpark</a>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                </ul>
+            </div>
+            <a href="index.html#contact" class="back-home-btn">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Cookie Policy</h1>
+                <p class="page-subtitle">Understanding how we use cookies to enhance your experience on ArtSpark</p>
+                <div class="last-updated">Last updated: January 30, 2025</div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">What Are Cookies?</h2>
+                <div class="section-content">
+                    <p>Cookies are small text files that are placed on your computer or mobile device when you visit our website. They are widely used to make websites work more efficiently and to provide information to website owners.</p>
+                    <p>At ArtSpark, we use cookies to enhance your browsing experience, remember your preferences, and provide personalized content that matches your interests in art and creativity.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Types of Cookies We Use</h2>
+                <div class="section-content">
+                    <table class="cookie-table">
+                        <thead>
+                            <tr>
+                                <th>Cookie Type</th>
+                                <th>Purpose</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Essential Cookies</strong></td>
+                                <td>Required for basic website functionality, navigation, and security</td>
+                                <td>Session/Persistent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Performance Cookies</strong></td>
+                                <td>Help us understand how visitors interact with our website</td>
+                                <td>Up to 2 years</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Functionality Cookies</strong></td>
+                                <td>Remember your preferences and personalize your experience</td>
+                                <td>Up to 1 year</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marketing Cookies</strong></td>
+                                <td>Used to deliver relevant advertisements and track ad effectiveness</td>
+                                <td>Up to 13 months</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">How We Use Cookies</h2>
+                <div class="section-content">
+                    <p>We use cookies for various purposes to improve your experience on ArtSpark:</p>
+                    <ul>
+                        <li><strong>Authentication:</strong> To keep you logged in during your session and remember your login preferences</li>
+                        <li><strong>Personalization:</strong> To remember your favorite art categories, preferred artists, and customized settings</li>
+                        <li><strong>Analytics:</strong> To understand how you navigate our site and which artworks and blog posts are most popular</li>
+                        <li><strong>Security:</strong> To protect against fraud and ensure the security of your account and data</li>
+                        <li><strong>Content Delivery:</strong> To optimize loading times and deliver content efficiently</li>
+                        <li><strong>Marketing:</strong> To show you relevant art exhibitions, workshops, and artist features that match your interests</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Third-Party Cookies</h2>
+                <div class="section-content">
+                    <p>We may also use third-party cookies from trusted partners to enhance your experience:</p>
+                    <ul>
+                        <li><strong>Google Analytics:</strong> To analyze website traffic and user behavior</li>
+                        <li><strong>Social Media Platforms:</strong> For social sharing buttons and embedded content from Instagram, Facebook, and other platforms</li>
+                        <li><strong>Payment Processors:</strong> To securely process transactions for art purchases and commissions</li>
+                        <li><strong>Content Delivery Networks:</strong> To ensure fast loading of images and media content</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Note:</strong> These third parties may use cookies according to their own privacy policies, which we encourage you to review.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Managing Your Cookie Preferences</h2>
+                <div class="section-content">
+                    <p>You have several options to manage cookies:</p>
+                    
+                    <h3 style="color: #4ecdc4; margin: 2rem 0 1rem 0;">Browser Settings</h3>
+                    <p>Most web browsers allow you to control cookies through their settings. You can:</p>
+                    <ul>
+                        <li>View and delete cookies that are already stored on your device</li>
+                        <li>Block all cookies from being stored</li>
+                        <li>Allow cookies only from specific websites</li>
+                        <li>Block third-party cookies while allowing first-party cookies</li>
+                    </ul>
+
+                    <h3 style="color: #4ecdc4; margin: 2rem 0 1rem 0;">Cookie Consent Banner</h3>
+                    <p>When you first visit ArtSpark, you'll see a cookie consent banner where you can:</p>
+                    <ul>
+                        <li>Accept all cookies for the full website experience</li>
+                        <li>Customize your preferences by cookie category</li>
+                        <li>Accept only essential cookies</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> Blocking certain cookies may limit your ability to use some features of our website, such as saving preferences, viewing personalized content, or completing purchases.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Cookie Retention</h2>
+                <div class="section-content">
+                    <p>Different cookies have different lifespans:</p>
+                    <ul>
+                        <li><strong>Session Cookies:</strong> Deleted when you close your browser</li>
+                        <li><strong>Persistent Cookies:</strong> Remain on your device for a set period or until you delete them</li>
+                        <li><strong>Essential Cookies:</strong> Kept for as long as necessary for website functionality</li>
+                        <li><strong>Analytics Cookies:</strong> Typically retained for 24 months</li>
+                        <li><strong>Marketing Cookies:</strong> Usually expire after 13 months</li>
+                    </ul>
+                    
+                    <p>We regularly review our cookie usage and retention periods to ensure we only keep data for as long as necessary.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Updates to This Policy</h2>
+                <div class="section-content">
+                    <p>We may update this Cookie Policy from time to time to reflect changes in technology, legal requirements, or our practices. When we make significant changes, we will:</p>
+                    <ul>
+                        <li>Update the "Last updated" date at the top of this policy</li>
+                        <li>Notify you through a prominent notice on our website</li>
+                        <li>Send you an email notification if you have an account with us</li>
+                        <li>Request renewed consent if required by law</li>
+                    </ul>
+                    
+                    <p>We encourage you to review this policy periodically to stay informed about how we use cookies.</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Questions About Our Cookie Policy?</h3>
+                <p>If you have any questions about our use of cookies or this policy, please don't hesitate to contact us:</p>
+                <p><strong>Email:</strong> privacy@artspark.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>Address:</strong> 123 Creative Avenue, Art District, NY 10001</p>
+                <p style="margin-top: 1rem; font-style: italic;">Our privacy team typically responds within 48 hours.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">ArtSpark</div>
+                <p>Igniting creativity worldwide by connecting artists and art enthusiasts in a vibrant community dedicated to sharing and celebrating artistic expression.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="cookie.html">Cookie Policy</a></li>
+                    <li><a href="copyright.html">Copyright Notice</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Creative Avenue, Art District, NY 10001</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> hello@artspark.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ArtSpark. All rights reserved. | Igniting creativity worldwide</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 1)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

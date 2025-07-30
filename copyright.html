@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright Notice - ArtSpark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 6rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .back-home-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 4rem 0;
+            min-height: calc(100vh - 300px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .section-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .section-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .section-content ol li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-left: 4px solid #ff6b6b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #856404;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(78, 205, 196, 0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info strong {
+            color: #333;
+        }
+
+        .dmca-form {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(78, 205, 196, 0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+
+        .dmca-form h4 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .copyright-symbol {
+            font-size: 1.2em;
+            color: #ff6b6b;
+            margin-right: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0 2rem 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffffff, #c3cfe2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact i {
+            font-size: 1.2rem;
+            width: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .back-home-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-links h3::after, .footer-contact h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for smooth transitions */
+        .content-section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .content-section:nth-child(2) { animation-delay: 0.1s; }
+        .content-section:nth-child(3) { animation-delay: 0.2s; }
+        .content-section:nth-child(4) { animation-delay: 0.3s; }
+        .content-section:nth-child(5) { animation-delay: 0.4s; }
+        .content-section:nth-child(6) { animation-delay: 0.5s; }
+        .content-section:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ArtSpark</a>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                </ul>
+            </div>
+            <a href="index.html#contact" class="back-home-btn">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title"><span class="copyright-symbol">©</span>Copyright Notice</h1>
+                <p class="page-subtitle">Protecting artistic intellectual property and respecting creators' rights on ArtSpark</p>
+                <div class="last-updated">Last updated: January 30, 2025</div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Copyright Protection</h2>
+                <div class="section-content">
+                    <p>ArtSpark is committed to protecting the intellectual property rights of artists, creators, and content owners. All original artwork, photographs, written content, designs, and creative materials displayed on our platform are protected by copyright law and other applicable intellectual property rights.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> Unauthorized use, reproduction, distribution, or modification of copyrighted content without explicit permission from the copyright owner is strictly prohibited and may result in legal action.</p>
+                    </div>
+                    
+                    <p>By using ArtSpark, you acknowledge and agree to respect all copyright and intellectual property rights of the content creators and owners whose work appears on our platform.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">ArtSpark Platform Content</h2>
+                <div class="section-content">
+                    <h3 style="color: #4ecdc4; margin: 2rem 0 1rem 0;">Website Design and Code</h3>
+                    <p>The ArtSpark website design, layout, graphics, user interface, software code, and all related proprietary materials are owned by ArtSpark and are protected by copyright, trademark, and other intellectual property laws. This includes but is not limited to:</p>
+                    <ul>
+                        <li>Website layout and visual design elements</li>
+                        <li>Logo, branding, and trademark materials</li>
+                        <li>Software code and functionality</li>
+                        <li>Database structure and organization</li>
+                        <li>Original written content and blog posts</li>
+                    </ul>
+
+                    <h3 style="color: #4ecdc4; margin: 2rem 0 1rem 0;">User-Generated Content</h3>
+                    <p>Artists and users who upload content to ArtSpark retain full copyright ownership of their original works. By uploading content, users grant ArtSpark a limited, non-exclusive license to display, distribute, and promote their work on our platform for the purpose of operating our service.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Permitted Uses</h2>
+                <div class="section-content">
+                    <p>The following uses are generally permitted under fair use or with proper attribution:</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3><i class="fas fa-eye"></i> Personal Viewing</h3>
+                            <p>You may view and browse artwork on ArtSpark for personal, non-commercial purposes.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="fas fa-share-alt"></i> Social Sharing</h3>
+                            <p>You may share links to artwork pages on social media platforms, provided you credit the original artist.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="fas fa-graduation-cap"></i> Educational Use</h3>
+                            <p>Limited use for educational purposes with proper attribution to the artist and ArtSpark platform.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="fas fa-newspaper"></i> Press Coverage</h3>
+                            <p>Media outlets may use images for legitimate news coverage with proper attribution and artist credit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Prohibited Uses</h2>
+                <div class="section-content">
+                    <p>The following activities are strictly prohibited without explicit written permission from the copyright owner:</p>
+                    <ul>
+                        <li><strong>Commercial Use:</strong> Using artwork for commercial purposes, advertising, or profit-making activities</li>
+                        <li><strong>Reproduction:</strong> Copying, downloading, or reproducing artwork in any form</li>
+                        <li><strong>Distribution:</strong> Redistributing or selling artwork through other platforms or channels</li>
+                        <li><strong>Modification:</strong> Altering, editing, or creating derivative works based on original artwork</li>
+                        <li><strong>Unauthorized Display:</strong> Displaying artwork on other websites, publications, or physical locations</li>
+                        <li><strong>Plagiarism:</strong> Claiming artwork as your own or removing artist attribution</li>
+                        <li><strong>Bulk Download:</strong> Using automated tools to download multiple artworks</li>
+                    </ul>
+                    
+                    <div class="warning-box">
+                        <p><strong>Warning:</strong> Violation of these terms may result in account suspension, legal action, and liability for damages.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">DMCA Compliance</h2>
+                <div class="section-content">
+                    <p>ArtSpark complies with the Digital Millennium Copyright Act (DMCA) and responds promptly to valid copyright infringement notices. If you believe your copyrighted work has been used on our platform without authorization, you may submit a DMCA takedown request.</p>
+                    
+                    <div class="dmca-form">
+                        <h4>To file a DMCA takedown notice, please provide:</h4>
+                        <ol>
+                            <li><strong>Identification of the copyrighted work</strong> that you claim has been infringed</li>
+                            <li><strong>Identification of the infringing material</strong> and its location on our website</li>
+                            <li><strong>Your contact information</strong> including name, address, phone number, and email</li>
+                            <li><strong>A statement of good faith belief</strong> that the use is not authorized by the copyright owner</li>
+                            <li><strong>A statement of accuracy</strong> under penalty of perjury that you are authorized to act on behalf of the copyright owner</li>
+                            <li><strong>Your physical or electronic signature</strong></li>
+                        </ol>
+                    </div>
+                    
+                    <p>Send DMCA notices to: <strong>dmca@artspark.com</strong></p>
+                    <p>We will process valid DMCA requests within 24-48 hours and notify all relevant parties of the action taken.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Artist Rights and Responsibilities</h2>
+                <div class="section-content">
+                    <h3 style="color: #4ecdc4; margin: 2rem 0 1rem 0;">Artist Rights</h3>
+                    <ul>
+                        <li>Retain full copyright ownership of uploaded artwork</li>
+                        <li>Control how their work is displayed and promoted</li>
+                        <li>Request removal of their content at any time</li>
+                        <li>Receive proper attribution for their work</li>
+                        <li>Pursue legal action against unauthorized use</li>
+                    </ul>
+
+                    <h3 style="color: #4ecdc4; margin: 2rem 0 1rem 0;">Artist Responsibilities</h3>
+                    <ul>
+                        <li>Only upload original work or content they have rights to use</li>
+                        <li>Provide accurate information about their artwork</li>
+                        <li>Respect other artists' copyrights and intellectual property</li>
+                        <li>Promptly respond to legitimate copyright concerns</li>
+                        <li>Follow ArtSpark's community guidelines and terms of service</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">Licensing and Permissions</h2>
+                <div class="section-content">
+                    <p>If you wish to use artwork from ArtSpark for purposes beyond what is permitted under fair use, you must obtain proper licensing or permission from the copyright owner. ArtSpark can help facilitate contact between interested parties and artists for licensing discussions.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3><i class="fas fa-handshake"></i> Commercial Licensing</h3>
+                            <p>Contact artists directly for commercial use rights, reproduction licenses, or commission work.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="fas fa-print"></i> Print Rights</h3>
+                            <p>Separate licensing may be required for print reproduction, merchandise, or physical display rights.</p>
+                        </div>
+                    </div>
+                    
+                    <p>Artists may choose to offer their work under various licensing terms, including Creative Commons licenses, royalty-free use, or custom licensing agreements. Always verify the specific license terms before using any artwork.</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Copyright Questions & DMCA Notices</h3>
+                <p>For copyright-related inquiries, licensing questions, or to report copyright infringement:</p>
+                <p><strong>Copyright Agent:</strong> legal@artspark.com</p>
+                <p><strong>DMCA Notices:</strong> dmca@artspark.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>Address:</strong> 123 Creative Avenue, Art District, NY 10001</p>
+                <p style="margin-top: 1rem; font-style: italic;">Our legal team responds to copyright matters within 24-48 hours.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">ArtSpark</div>
+                <p>Igniting creativity worldwide by connecting artists and art enthusiasts in a vibrant community dedicated to sharing and celebrating artistic expression.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="cookie.html">Cookie Policy</a></li>
+                    <li><a href="copyright.html">Copyright Notice</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Creative Avenue, Art District, NY 10001</li>
+                    <li><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> hello@artspark.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ArtSpark. All rights reserved. | Igniting creativity worldwide</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 1)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover effect to info cards
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+</body>
+</html>

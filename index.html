@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSpark - Creative Art Sharing Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 6rem;
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: url("hero\ backgroud.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            color: black;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Full Width Section Styling */
+        .full-width-section {
+            width: 100%;
+            padding: 5rem 0;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Featured Artworks Section - Now with horizontal scroll like blog */
+        #gallery {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        .artwork-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .artwork-scroll {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            padding: 1rem 0;
+        }
+
+        .artwork-card {
+            min-width: 350px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .artwork-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .artwork-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .artwork-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .artwork-info {
+            padding: 1.5rem;
+        }
+
+        .artwork-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .artwork-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .artist-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .scroll-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .scroll-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: url("about.jpg");
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            opacity: 0.8;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .mission, .vision {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .mission h3, .vision h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        /* Blog Section */
+        #blog {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            color: white;
+        }
+
+        #blog .section-title {
+            color: white;
+        }
+
+        .blog-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-scroll {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            padding: 1rem 0;
+        }
+
+        .blog-card {
+            min-width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease-in-out infinite;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            color: #333;
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .blog-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-date {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffffff, #c3cfe2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact i {
+            font-size: 1.2rem;
+            width: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes gradientShift { 
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .contact-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .mission-vision,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .artwork-card,
+            .blog-card {
+                min-width: 280px;
+            }
+
+            .section-container {
+                padding: 0 1rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-links h3::after, .footer-contact h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Active navigation state styles */
+        .nav-links a.active {
+            color: #ff6b6b !important;
+        }
+        .nav-links a.active::after {
+            width: 100% !important;
+        }
+        .contact-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ArtSpark</div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <a href="#contact" class="contact-btn">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to ArtSpark</h1>
+                <p>Ignite your creativity and share your artistic journey with a vibrant community of artists, creators, and art enthusiasts from around the world.</p>
+                <a href="#about" class="cta-btn">Discover More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artworks Section -->
+    <section class="full-width-section" id="gallery">
+        <div class="section-container">
+            <h2 class="section-title">Featured Artworks</h2>
+            <div class="artwork-container">
+                <div class="artwork-scroll" id="artworkScroll">
+                    <!-- Artwork cards will be dynamically inserted here -->
+                </div>
+                <div class="scroll-controls">
+                    <button class="scroll-btn" id="artworkScrollLeft">←</button>
+                    <button class="scroll-btn" id="artworkScrollRight">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="full-width-section" id="about">
+        <div class="section-container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Artistic Journey</h3>
+                    <p>ArtSpark was born from a passion for creativity and a desire to connect artists worldwide. We believe that art has the power to inspire, heal, and bring people together across all boundaries.</p>
+                    <p>Our platform serves as a digital canvas where emerging and established artists can showcase their work, learn from each other, and find inspiration in the diverse tapestry of human creativity.</p>
+                    <p>Whether you're a painter, sculptor, digital artist, photographer, or any other type of creative soul, ArtSpark provides the tools and community you need to grow and thrive in your artistic journey.</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+
+            <div class="mission-vision">
+                <div class="mission">
+                    <h3>Our Mission</h3>
+                    <p>To create an inclusive platform where artists of all levels can share their work, connect with like-minded individuals, and access resources that help them grow both creatively and professionally.</p>
+                </div>
+                <div class="vision">
+                    <h3>Our Vision</h3>
+                    <p>To become the world's leading community for artistic expression, fostering creativity, collaboration, and cultural exchange among artists from every corner of the globe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="full-width-section" id="blog">
+        <div class="section-container">
+            <h2 class="section-title">Art Blog</h2>
+            <div class="blog-container">
+                <div class="blog-scroll" id="blogScroll">
+                    <!-- Blog cards will be dynamically inserted here -->
+                </div>
+                <div class="scroll-controls">
+                    <button class="scroll-btn" id="scrollLeft">←</button>
+                    <button class="scroll-btn" id="scrollRight">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="full-width-section" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Ready to join our artistic community? Have questions about commissions or want to submit your artwork? We'd love to hear from you!</p>
+                    <p><strong>Email:</strong> hello@artspark.com</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Address:</strong> 123 Creative Avenue, Art District, NY 10001</p>
+                    
+                    <h3 style="margin-top: 2rem;">Commission Requests</h3>
+                    <p>Looking for custom artwork? Our talented artists are available for commission work. Fill out the form and let us know about your project!</p>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="error-message">Please enter a valid name (alphabets only)</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <div class="error-message">Please enter your message</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">ArtSpark</div>
+                <p>Igniting creativity worldwide by connecting artists and art enthusiasts in a vibrant community dedicated to sharing and celebrating artistic expression.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="cookie.html">Cookie Policy</a></li>
+                    <li><a href="copyright.html">Copyright Notice</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Creative Avenue, Art District, NY 10001</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> hello@artspark.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ArtSpark. All rights reserved. | Igniting creativity worldwide</p>
+        </div>
+    </footer>
+
+    <script>
+        // Artwork data
+        const artworks = [
+            {
+                title: "Abstract Dreams",
+                description: "A vibrant exploration of color and emotion through abstract expressionism.",
+                artist: "Alex Rivera",
+                image: "color-emotions.jpg"
+            },
+            {
+                title: "Digital Landscapes",
+                description: "Stunning digital art that blends reality with imagination.",
+                artist: "Sarah Chen",
+                image: "Digital.jpg"
+            },
+            {
+                title: "Modern Sculptures",
+                description: "Contemporary sculptures that challenge traditional forms.",
+                artist: "Jordan Blake",
+                image: "Modern.webp"
+            },
+            {
+                title: "Street Photography",
+                description: "Capturing the essence of urban life through powerful imagery.",
+                artist: "Marcus Thompson",
+                image: "street.webp"
+            },
+            {
+                title: "Watercolor Magic",
+                description: "Delicate watercolor paintings that capture nature's beauty.",
+                artist: "Elena Rossi",
+                image: "Watercolor.jpg"
+            },
+            {
+                title: "Portrait Studies",
+                description: "Intimate portraits that reveal the soul behind the face.",
+                artist: "David Kim",
+                image: "portrait.jpg"
+            },
+            {
+                title: "Mixed Media Art",
+                description: "Innovative combinations of traditional and modern techniques.",
+                artist: "Maya Patel",
+                image: "mixed.jpg"
+            },
+            {
+                title: "Geometric Abstracts",
+                description: "Mathematical precision meets artistic expression.",
+                artist: "Luis Mendez",
+                image: "geometric.avif"
+            }
+        ];
+
+        // Blog posts data
+        const blogPosts = [
+            {
+                title: "Mastering Color Theory",
+                description: "Learn the fundamentals of color theory and how to apply them in your artwork. Discover the emotional impact of different color combinations and create more compelling compositions.",
+                date: "March 15, 2024",
+                image: "theory.jpg"
+            },
+            {
+                title: "Digital Painting Techniques",
+                description: "Explore advanced digital painting techniques that will take your artwork to the next level. From brush selection to layer management, master the digital canvas.",
+                date: "March 10, 2024",
+                image: "Digital.jpg"
+            },
+            {
+                title: "Photography Composition",
+                description: "Master the art of composition in photography. Learn about the rule of thirds, leading lines, and other techniques that create visually striking photographs.",
+                date: "March 5, 2024",
+                image: "photography.jpg"
+            },
+            {
+                title: "Sculpting Fundamentals",
+                description: "Discover the basics of sculpting, from clay preparation to finishing techniques. Whether you're working with clay, stone, or digital sculpting tools.",
+                date: "February 28, 2024",
+                image: "sculpture.webp"
+            },
+            {
+                title: "Drawing Fundamentals",
+                description: "Build a strong foundation in drawing with essential techniques for perspective, shading, and proportion. Perfect for beginners and those looking to refine their skills.",
+                date: "February 20, 2024",
+                image: "basics.webp"
+            },
+            {
+                title: "Art History Insights",
+                description: "Explore the rich history of art movements and their influence on contemporary creativity. From Renaissance to modern abstract expressionism.",
+                date: "February 15, 2024",
+                image: "history.jpg"
+            },
+            {
+                title: "Watercolor Techniques",
+                description: "Learn the secrets of watercolor painting, from washes to glazing techniques that will bring your paintings to life with vibrant colors and textures.",
+                date: "February 10, 2024",
+                image: "Watercolor.jpg"
+            },
+            {
+                title: "Portrait Drawing",
+                description: "Master the art of portrait drawing with techniques for capturing likeness, expressions, and the unique character of your subjects.",
+                date: "February 5, 2024",
+                image: "portrait.jpg"
+            }
+        ];
+
+        // Function to generate artwork cards
+        function generateArtworkCards() {
+            const artworkScroll = document.getElementById('artworkScroll');
+            
+            artworks.forEach(artwork => {
+                const artworkCard = document.createElement('div');
+                artworkCard.className = 'artwork-card';
+                
+                artworkCard.innerHTML = `
+                    <div class="artwork-image">
+                        <img src="${artwork.image}" alt="${artwork.title}" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>${artwork.title}</h3>
+                        <p>${artwork.description}</p>
+                        <div class="artist-info">
+                            <span>👨‍🎨</span>
+                            <span>by ${artwork.artist}</span>
+                        </div>
+                    </div>
+                `;
+                
+                artworkScroll.appendChild(artworkCard);
+            });
+        }
+
+        // Function to generate blog cards
+        function generateBlogCards() {
+            const blogScroll = document.getElementById('blogScroll');
+            
+            blogPosts.forEach(post => {
+                const blogCard = document.createElement('div');
+                blogCard.className = 'blog-card';
+                
+                blogCard.innerHTML = `
+                    <div class="blog-image">
+                        <img src="${post.image}" alt="${post.title}" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <h3>${post.title}</h3>
+                        <p>${post.description}</p>
+                        <div class="blog-date">${post.date}</div>
+                    </div>
+                `;
+                
+                blogScroll.appendChild(blogCard);
+            });
+        }
+
+        // Call functions when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            generateArtworkCards();
+            generateBlogCards();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Artwork scroll functionality
+        const artworkScroll = document.getElementById('artworkScroll');
+        const artworkScrollLeftBtn = document.getElementById('artworkScrollLeft');
+        const artworkScrollRightBtn = document.getElementById('artworkScrollRight');
+        
+        let artworkScrollPosition = 0;
+        const artworkScrollAmount = 370; // Width of one card plus gap
+        
+        artworkScrollRightBtn.addEventListener('click', () => {
+            const maxScroll = artworkScroll.scrollWidth - artworkScroll.clientWidth;
+            if (artworkScrollPosition < maxScroll) {
+                artworkScrollPosition = Math.min(artworkScrollPosition + artworkScrollAmount, maxScroll);
+                artworkScroll.style.transform = `translateX(-${artworkScrollPosition}px)`;
+            }
+        });
+        
+        artworkScrollLeftBtn.addEventListener('click', () => {
+            if (artworkScrollPosition > 0) {
+                artworkScrollPosition = Math.max(artworkScrollPosition - artworkScrollAmount, 0);
+                artworkScroll.style.transform = `translateX(-${artworkScrollPosition}px)`;
+            }
+        });
+
+        // Blog scroll functionality
+        const blogScroll = document.getElementById('blogScroll');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+        
+        let blogScrollPosition = 0;
+        const blogScrollAmount = 370; // Width of one card plus gap
+        
+        scrollRightBtn.addEventListener('click', () => {
+            const maxScroll = blogScroll.scrollWidth - blogScroll.clientWidth;
+            if (blogScrollPosition < maxScroll) {
+                blogScrollPosition = Math.min(blogScrollPosition + blogScrollAmount, maxScroll);
+                blogScroll.style.transform = `translateX(-${blogScrollPosition}px)`;
+            }
+        });
+        
+        scrollLeftBtn.addEventListener('click', () => {
+            if (blogScrollPosition > 0) {
+                blogScrollPosition = Math.max(blogScrollPosition - blogScrollAmount, 0);
+                blogScroll.style.transform = `translateX(-${blogScrollPosition}px)`;
+            }
+        });
+
+        // Auto-scroll blog (optional)
+        setInterval(() => {
+            const maxScroll = blogScroll.scrollWidth - blogScroll.clientWidth;
+            if (blogScrollPosition >= maxScroll) {
+                blogScrollPosition = 0;
+            } else {
+                blogScrollPosition += blogScrollAmount;
+            }
+            blogScroll.style.transform = `translateX(-${blogScrollPosition}px)`;
+        }, 5000);
+
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        // Validation functions
+        function validateName(name) {
+            const nameRegex = /^[A-Za-z\s]+$/;
+            return nameRegex.test(name.trim()) && name.trim().length > 0;
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email.trim());
+        }
+
+        function showError(input, show = true) {
+            const formGroup = input.closest('.form-group');
+            if (show) {
+                formGroup.classList.add('error');
+            } else {
+                formGroup.classList.remove('error');
+            }
+        }
+
+        // Real-time validation
+        nameInput.addEventListener('input', () => {
+            const isValid = validateName(nameInput.value);
+            showError(nameInput, !isValid);
+        });
+
+        emailInput.addEventListener('input', () => {
+            const isValid = validateEmail(emailInput.value);
+            showError(emailInput, !isValid);
+        });
+
+        messageInput.addEventListener('input', () => {
+            const isValid = messageInput.value.trim().length > 0;
+            showError(messageInput, !isValid);
+        });
+
+        // Form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = nameInput.value;
+            const email = emailInput.value;
+            const message = messageInput.value;
+            
+            const isNameValid = validateName(name);
+            const isEmailValid = validateEmail(email);
+            const isMessageValid = message.trim().length > 0;
+            
+            showError(nameInput, !isNameValid);
+            showError(emailInput, !isEmailValid);
+            showError(messageInput, !isMessageValid);
+            
+            if (isNameValid && isEmailValid && isMessageValid) {
+                // Simulate form submission
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                setTimeout(() => {
+                    alert('Thank you for your message! We\'ll get back to you soon.');
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    
+                    // Remove any error states
+                    document.querySelectorAll('.form-group.error').forEach(group => {
+                        group.classList.remove('error');
+                    });
+                }, 2000);
+            }
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Add active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a, .contact-btn');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

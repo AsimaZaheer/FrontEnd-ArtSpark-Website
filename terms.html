@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - ArtSpark</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 6rem;
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .terms-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .terms-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .terms-content {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .terms-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .terms-section h2 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .terms-section h3 {
+            color: #4ecdc4;
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .terms-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .terms-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .last-updated {
+            text-align: right;
+            font-style: italic;
+            color: #888;
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0 2rem 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffffff, #c3cfe2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact i {
+            font-size: 1.2rem;
+            width: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .contact-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .terms-container {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .terms-content {
+                padding: 2rem;
+            }
+
+            .terms-title {
+                font-size: 2.2rem;
+            }
+
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .terms-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ArtSpark</div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                </ul>
+            </div>
+            <a href="index.html#contact" class="contact-btn">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="terms-container">
+        <h1 class="terms-title">Terms and Conditions</h1>
+        
+        <div class="terms-content">
+            <div class="terms-section">
+                <p>Last Updated: June 10, 2024</p>
+                <p>Welcome to ArtSpark! These Terms and Conditions ("Terms") govern your use of our website and services. By accessing or using ArtSpark, you agree to be bound by these Terms. If you disagree with any part of these Terms, please do not use our services.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using the ArtSpark website, mobile application, or any services provided by ArtSpark ("Services"), you agree to be bound by these Terms and our Privacy Policy. These Terms apply to all visitors, users, and others who access or use the Service.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. User Accounts</h2>
+                
+                <h3>Account Creation</h3>
+                <p>To access certain features, you may need to create an account. You agree to:</p>
+                <ul>
+                    <li>Provide accurate, current, and complete information</li>
+                    <li>Maintain and promptly update your account information</li>
+                    <li>Maintain the security of your password</li>
+                    <li>Accept all risks of unauthorized access to your account</li>
+                </ul>
+                
+                <h3>Account Responsibility</h3>
+                <p>You are responsible for all activities that occur under your account. ArtSpark reserves the right to suspend or terminate accounts that violate these Terms.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. User Content</h2>
+                
+                <h3>Content Ownership</h3>
+                <p>You retain all rights to any artwork, images, text, or other content ("Content") you submit to ArtSpark. By posting Content, you grant ArtSpark a non-exclusive, worldwide, royalty-free license to use, display, reproduce, and distribute your Content in connection with the Services.</p>
+                
+                <h3>Content Guidelines</h3>
+                <p>You agree not to post Content that:</p>
+                <ul>
+                    <li>Violates any law or infringes any third-party rights</li>
+                    <li>Is pornographic, obscene, or excessively violent</li>
+                    <li>Contains hate speech or promotes discrimination</li>
+                    <li>Is fraudulent, deceptive, or misleading</li>
+                    <li>Contains viruses or malicious code</li>
+                </ul>
+                
+                <h3>Content Moderation</h3>
+                <p>ArtSpark reserves the right to remove any Content that violates these Terms without prior notice.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Intellectual Property</h2>
+                <p>The Service and its original content, features, and functionality are owned by ArtSpark and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+                <p>You may not modify, reproduce, distribute, create derivative works of, publicly display, or in any way exploit any of the content, code, or materials available on the Service without our express written permission.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Payments and Fees</h2>
+                
+                <h3>Premium Services</h3>
+                <p>Certain features may require payment of fees. You agree to pay all applicable fees and taxes.</p>
+                
+                <h3>Refunds</h3>
+                <p>All sales are final unless otherwise stated. Refund requests will be considered on a case-by-case basis.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. Prohibited Conduct</h2>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Use the Service for any illegal purpose</li>
+                    <li>Harass, abuse, or harm others</li>
+                    <li>Impersonate any person or entity</li>
+                    <li>Interfere with or disrupt the Service</li>
+                    <li>Use any automated system to access the Service</li>
+                    <li>Reverse engineer or attempt to extract source code</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>7. Termination</h2>
+                <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.</p>
+                <p>Upon termination, your right to use the Service will immediately cease.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>8. Disclaimers</h2>
+                <p>THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. ARTSPARK DISCLAIMS ALL WARRANTIES INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+                <p>ARTSPARK DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>9. Limitation of Liability</h2>
+                <p>IN NO EVENT SHALL ARTSPARK BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE.</p>
+                <p>OUR TOTAL LIABILITY FOR ANY CLAIMS UNDER THESE TERMS SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE PAST 12 MONTHS.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>10. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of law provisions.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>11. Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms at any time. We will provide notice of significant changes through our website or by email. Your continued use of the Service after changes constitutes acceptance of the new Terms.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>12. Contact Us</h2>
+                <p>If you have any questions about these Terms, please contact us:</p>
+                <ul>
+                    <li>By email: legal@artspark.com</li>
+                    <li>By visiting our contact page on our website</li>
+                    <li>By mail: 123 Creative Avenue, Art District, NY 10001</li>
+                </ul>
+            </div>
+
+            <p class="last-updated">Last updated: June 10, 2024</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">ArtSpark</div>
+                <p>Igniting creativity worldwide by connecting artists and art enthusiasts in a vibrant community dedicated to sharing and celebrating artistic expression.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="cookie.html">Cookie Policy</a></li>
+                    <li><a href="copyright.html">Copyright Notice</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Creative Avenue, Art District, NY 10001</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> hello@artspark.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 ArtSpark. All rights reserved. | Igniting creativity worldwide</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Add active navigation highlighting
+        window.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add CSS for active navigation state
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-links a.active {
+                color: #ff6b6b !important;
+            }
+            .nav-links a.active::after {
+                width: 100% !important;
+            }
+            .contact-btn.active {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
